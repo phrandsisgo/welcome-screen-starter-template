@@ -9,18 +9,108 @@ export default {
     };
   },
 };
+
+const cardItem = [
+  {
+    date: '07.09.2023 , 14:00',
+    title: 'Druckerpapier einkaufen',
+    description: 'Da uns kürzlich die Druckerpatronen ausgegangen sind, müssen für die HR-Abteilung neue Druckerpatronen gekauft werden.',
+  },
+  {
+    date: '08.09.2023 , 10:30',
+    title: 'Besprechung mit dem Vertriebsteam',
+    description: 'Besprechung mit dem Vertriebsteam, um die Verkaufsstrategie für das kommende Quartal zu planen.',
+  },
+  {
+    date: '09.09.2023 , 16:15',
+    title: 'Monatlicher Finanzbericht erstellen',
+    description: 'Erstellung des monatlichen Finanzberichts für die Geschäftsführung und Analyse der finanziellen Leistung des Unternehmens.',
+  },
+  {
+    date: '10.09.2023 , 13:45',
+    title: 'Kundengespräch mit XYZ Inc.',
+    description: 'Telefonisches Gespräch mit dem Kunden XYZ Inc. bezüglich ihres laufenden Projekts und Klärung von offenen Fragen.',
+  },
+  {
+    date: '11.09.2023 , 09:00',
+    title: 'Mitarbeitergespräche führen',
+    description: 'Durchführung von jährlichen Mitarbeitergesprächen und Festlegung von Zielen für das kommende Jahr.',
+  },
+  {
+    date: '12.09.2023 , 15:30',
+    title: 'Besprechung mit dem IT-Team',
+    description: 'Besprechung mit dem IT-Team, um technische Anforderungen für das neue Projekt zu erörtern und Ressourcen zuzuweisen.',
+  },
+];
 </script>
 <template>
-  <div id="app">
+  <div id="application">
     <h1 class="site-title">{{ title }}</h1>
+    <h3 class="site-date">{{new Date().toLocaleDateString('en-GB').replace(/\//g, '.')}}</h3>
+    <div class="card">
+      <p class="timeStamp">14.00 Uhr</p>
+      <p class="cardTitle"> Basisbeschäftigung Besuch</p>
+      <p class="cardBeschreibung"> Interesse für den zweiten Kurs werden uns besuchen</p>
+
+    </div>
+    <Card>
+
+
+
+    </Card>
   </div>
+  <footer>
+    <div id="footerLogos">
+      <img src="src/assets/STZH_SEB_Logo.png" alt="Stadt Zürich Logo" class="logosSponsors">
+      <img src="src/assets/Opportunity.png" alt="Opportunity Logo" class="logosSponsors">
+      <img src="src/assets/SAG_Logo_De.png" alt="SAG-Logo" class="logosSponsors">
+    </div>
+  </footer>
 </template>
 <style>
-#app {
+#application {
   font-family: "Inter", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #323d4a;
   margin: 60px;
+  background-color: lightcyan;
+}
+.card{
+  background-color: darkblue;
+  padding: 10px;
+}
+.site-date{
+  color: grey;
+}
+.timeStamp{
+  color: tomato;
+  font-weight: bold;
+  font-size: large;
+}
+.cardTitle{
+  color: lightsalmon;
+  font-size: large;
+  font-weight: bold;
+}
+.cardBeschreibung{
+  color: lightcoral;
+}
+#footerLogos{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 10px;
+  color: darkblue;
+}
+.logosSponsors{
+  width: 200px;
+  height: 50px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
 }
 </style>
