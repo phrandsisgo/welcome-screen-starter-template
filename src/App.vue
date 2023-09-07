@@ -8,6 +8,7 @@ export default {
       api_token: import.meta.env.VITE_GOOGLE_API_KEY,
      //api_token: "AIzaSyBSzduu2jm5uF3pCFYrv98YIrvFgSd5kXY",
      entries:[],
+     transformedData:[],
       cardItem : [
         {
           id: 1,
@@ -64,8 +65,22 @@ export default {
         const response = await fetch(this.gsheet_url);
         const data = await response.json();
         this.entries = data.valueRanges[0].values;
-        //console.log("this is the data" +JSON.stringify(data));
-        console.log("this is the data" +this.entries);
+
+        //ab da fangt mein Versuch an
+
+        for (let i = 1; i < this.entries.length; i++) {
+          const [time, date, title, description] = this.entries[i];
+          const timeDate = `${date},${time}`;
+
+          // Push the transformed object into the array
+          this.transformedData.push({
+            timeDate,
+            title,
+            description,
+          });
+        }
+
+        console.log("this is the data" +this.transformedData);
       }
   },
 
@@ -116,6 +131,7 @@ const cardItem = [
   <div id="application">
     <h1 class="site-title">{{ title }}</h1>
     <h3 class="site-date">{{new Date().toLocaleDateString('en-GB').replace(/\//g, '.')}}</h3>
+  <!--
     <div class="card">
       <p class="timeStamp">14.00 Uhr</p>
       <p class="cardTitle">Projekt fertigstellen</p>
@@ -130,9 +146,15 @@ const cardItem = [
       <p class="cardTitle"> {{ card.title }}</p>
       <p class="cardBeschreibung"> {{ card.description }}</p>
 
+    </div>-->
+    <div class="card" v-for="eintrag in transformedData" v-if="transformedData">
+      <p class="timeStamp">{{eintrag.timeDate}}</p>
+      <p class="cardTitle"> {{ eintrag.title }}</p>
+      <p class="cardBeschreibung"> {{ eintrag.description }}</p>
+
     </div>
-    <div id="datenEinsicht" v-for="eintrag in entries">
-      Hallo
+    <div v-else>
+      no data available
     </div>
     <br><br><br>
   </div>
