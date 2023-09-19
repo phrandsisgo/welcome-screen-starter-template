@@ -1,5 +1,5 @@
 # Logs
-.env
+#.env
 .vscode
 logs
 *.log
